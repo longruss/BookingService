@@ -69,37 +69,30 @@
     );
     }
     </script>
-    <script>
-    const bookingForm = document.getElementById("booking-form");
-    bookingForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const checkin = document.getElementById("checkin").value;
-    const checkout = document.getElementById("checkout").value;
-    const roomType = document.getElementById("roomType").value;
-    alert(`Booking Confirmed! \nФИО: ${name} \nЭл. почта: ${email} \nНомер телефона: ${phone} \nДата заселения: ${checkin} \nДата выезда: ${checkout} \nТип номера: ${roomType}`);
-    });
-    // check if browser supports geolocation
-    if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        console.log("Latitude: " + latitude + ", Longitude: " + longitude);
-    },
-    function error(error){
-      console.log(error);
-    },
-    {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    });
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
+   <script>
+      const bookingForm = document.getElementById("booking-form");
+      bookingForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const checkin = new Date(document.getElementById("checkin").value);
+        const checkinFormatted = checkin.toLocaleDateString("ru-RU", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric"
+        });
+        const checkout = new Date(document.getElementById("checkout").value);
+        const checkoutFormatted = checkout.toLocaleDateString("ru-RU", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric"
+        });
+        const roomType = document.getElementById("roomType").value;
+        alert(`Booking Confirmed! \nName: ${name} \nEmail: ${email} \nPhone: ${phone} \nCheck-in: ${checkinFormatted} \nCheck-out: ${checkoutFormatted} \nRoom Type: ${roomType}`);
+      });
   </script>
+
 </body>
 </html>
 
