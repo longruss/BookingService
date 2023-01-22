@@ -41,6 +41,17 @@
   </form>
   <script>
     // JavaScript code goes here
+    
+    // check if browser supports geolocation
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log("Latitude: " + latitude + ", Longitude: " + longitude);
+      });
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
     const bookingForm = document.getElementById("booking-form");
     bookingForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -53,19 +64,7 @@
       
       alert(`Booking Confirmed! \nName: ${name} \nEmail: ${email} \nPhone: ${phone} \nCheck-in: ${checkin} \nCheck-out: ${checkout} \nRoom Type: ${roomType}`);
     });
-  </script>
-  
-  <script>
-  // check if browser supports geolocation
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      console.log("Latitude: " + latitude + ", Longitude: " + longitude);
-    });
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
+
 </script>
   
 </body>
