@@ -1,21 +1,21 @@
+/* Add this code to your CSS file */
 body {
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
-  background-image: url("https://core-pht-proxy.maps.yandex.ru/v1/photos/download?photo_id=oJnJTRo-QRfa271_j4LEiQ&image_size=XXXL");
+  background-image: url("path/to/image.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
 }
 
 h1 {
   text-align: center;
-  color: #333;
-  margin-top: 50px;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 form {
-  width: 80%;
-  margin: 0 auto;
-  text-align: left;
+  width: 500px;
+  margin: 50px auto;
+  text-align: center;
 }
 
 .form-group {
@@ -23,23 +23,10 @@ form {
 }
 
 label {
-  font-weight: bold;
   display: block;
   margin-bottom: 10px;
+  font-size: 18px;
 }
-
-footer{
-    background-color: #222;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-.contact-info{
-    margin: 0;
-    padding: 0;
-}
-
 
 input[type="text"],
 input[type="email"],
@@ -48,24 +35,25 @@ select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  box-sizing: border-box;
+  display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
-input[type="date" placeholder="dd-mm-yyyy"] {
-  width: 48%;
+input[type="date"] {
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  box-sizing: border-box;
+  display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
-  display: inline-block;
+  box-sizing: border-box;
 }
 
 .book-btn {
   width: 100%;
-  background-color: #3b5998;
+  background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -75,10 +63,23 @@ input[type="date" placeholder="dd-mm-yyyy"] {
 }
 
 .book-btn:hover {
-  background-color: #2980b9;
+  background-color: #45a049;
 }
 
-.error {
-  color: red;
-  margin-top: 10px;
+#map {
+  width: 100%;
+  height: 400px;
+  margin-top: 50px;
+}
+
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-info {
+  margin: 0;
+  padding: 0;
 }
