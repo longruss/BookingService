@@ -41,58 +41,32 @@
     </div>
   </form>
   <div id="map"></div>
-  <script>
-    function initMap() {
-    const address = 'ул. Софийская набережная, 30с1, Москва, Россия, 115035';
-    const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15
-    });
-    const geocoder = new google.maps.Geocoder();
 
-    geocoder.geocode({address: address}, function(results, status) {
-        if (status === 'OK') {
-        map.setCenter(results[0].geometry.location);
-        new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
-        } else {
-        console.log('Geocode was not successful for the following reason: ' + status);
+  <script src="https://api-maps.yandex.ru/2.1/?lang=en_US&apikey=API_KEY"></script>
+  <script>
+    ymaps.ready(init);
+
+    function init() {
+      const address = 'ул. Софийская набережная, 30с1, Москва, Россия, 115035';
+      const myMap = new ymaps.Map("map", {
+        center: [55.751574, 37.573856],
+        zoom: 9
+      });
+      const geocoder = ymaps.geocode(address);
+      geocoder.then(
+        function (res) {
+          const coords = res.geoObjects.get(0).geometry.getCoordinates();
+          myMap.setCenter(coords);
+          const myPlacemark = new ymaps.Placemark(coords, {
+            balloonContent: address
+          });
+          myMap.geoObjects.add(myPlacemark);
+        },
+        function (err) {
+          console.log(err);
         }
-    });
+      );
     }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap"></script>
-    <script>
-    const bookingForm = document.getElementById("booking-form");
-    bookingForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const checkin = document.getElementById("checkin").value;
-    const checkout = document.getElementById("checkout").value;
-    const roomType = document.getElementById("roomType").value;
-    alert(`Booking Confirmed! \nName: ${name} \nEmail: ${email} \nPhone: ${phone} \nCheck-in: ${checkin} \nCheck-out: ${checkout} \nRoom Type: ${roomType}`);
-    });
-    // check if browser supports geolocation
-    if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        console.log("Latitude: " + latitude + ", Longitude: " + longitude);
-       },
-    function error(error){
-      console.log(error);
-    },
-    {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    });
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
   </script>
 </body>
 </html>
