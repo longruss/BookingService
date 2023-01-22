@@ -6,38 +6,38 @@
   <script src="https://api-maps.yandex.ru/2.1/?lang=en_US&apikey=ae3273e6-8857-4cde-bdcc-b925a6c3f708"></script>
 </head>
 <body>
-  <h1>Book Your Room</h1>
+  <h1>Бронирование номера</h1>
   <form id="booking-form">
     <div class="form-group">
-      <label for="name">Name:</label>
+      <label for="name">ФИО:</label>
       <input type="text" class="form-control" id="name" required>
     </div>
     <div class="form-group">
-      <label for="email">Email:</label>
+      <label for="email">Электронная почта:</label>
       <input type="email" class="form-control" id="email" required>
     </div>
     <div class="form-group">
-      <label for="phone">Phone:</label>
+      <label for="phone">Телефон:</label>
       <input type="tel" class="form-control" id="phone" required>
     </div>
     <div class="form-group">
-      <label for="checkin">Check-in:</label>
+      <label for="checkin">Дата заселения:</label>
       <input type="date" class="form-control" id="checkin" required>
     </div>
     <div class="form-group">
-      <label for="checkout">Check-out:</label>
+      <label for="checkout">Дата выезда:</label>
       <input type="date" class="form-control" id="checkout" required>
     </div>
     <div class="form-group">
-      <label for="roomType">Room Type:</label>
+      <label for="roomType">Тип номера:</label>
       <select class="form-control" id="roomType" required>
-        <option value="single">Single Room</option>
-        <option value="double">Double Room</option>
-        <option value="suite">Suite</option>
+        <option value="single">Номер на одного</option>
+        <option value="double">Номер на двоих</option>
+        <option value="suite">Люкс</option>
       </select>
     </div>
     <div class="form-group">
-      <button class="book-btn" type="submit">Book</button>
+      <button class="book-btn" type="submit">Забронировать</button>
     </div>
   </form>
   <script type="text/javascript" charset="utf-8" 
@@ -79,7 +79,7 @@
     const checkin = document.getElementById("checkin").value;
     const checkout = document.getElementById("checkout").value;
     const roomType = document.getElementById("roomType").value;
-    alert(`Booking Confirmed! \nName: ${name} \nEmail: ${email} \nPhone: ${phone} \nCheck-in: ${checkin} \nCheck-out: ${checkout} \nRoom Type: ${roomType}`);
+    alert(`Booking Confirmed! \nФИО: ${name} \nЭл. почта: ${email} \nНомер телефона: ${phone} \nДата заселения: ${checkin} \nДата выезда: ${checkout} \nТип номера: ${roomType}`);
     });
     // check if browser supports geolocation
     if ("geolocation" in navigator) {
