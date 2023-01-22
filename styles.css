@@ -37,7 +37,7 @@ select {
   border-radius: 4px;
 }
 
-input[type="date"] {
+input[type="date" placeholder="dd-mm-yyyy"] {
   width: 48%;
   padding: 12px 20px;
   margin: 8px 0;
