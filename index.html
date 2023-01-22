@@ -3,6 +3,7 @@
 <head>
   <title>Hotel Booking Page</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=API_KEY"></script>
 </head>
 <body>
   <h1>Book Your Room</h1>
@@ -39,39 +40,60 @@
       <button class="book-btn" type="submit">Book</button>
     </div>
   </form>
+  <div id="map"></div>
   <script>
-    // JavaScript code goes here
+    function initMap() {
+    const address = 'ул. Софийская набережная, 30с1, Москва, Россия, 115035';
+    const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15
+    });
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({address: address}, function(results, status) {
+        if (status === 'OK') {
+        map.setCenter(results[0].geometry.location);
+        new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+        } else {
+        console.log('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+    }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap"></script>
+    <script>
     const bookingForm = document.getElementById("booking-form");
     bookingForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const phone = document.getElementById("phone").value;
-      const checkin = document.getElementById("checkin").value;
-      const checkout = document.getElementById("checkout").value;
-      const roomType = document.getElementById("roomType").value;
-      
-      alert(`Booking Confirmed! \nName: ${name} \nEmail: ${email} \nPhone: ${phone} \nCheck-in: ${checkin} \nCheck-out: ${checkout} \nRoom Type: ${roomType}`);
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const checkin = document.getElementById("checkin").value;
+    const checkout = document.getElementById("checkout").value;
+    const roomType = document.getElementById("roomType").value;
+    alert(`Booking Confirmed! \nName: ${name} \nEmail: ${email} \nPhone: ${phone} \nCheck-in: ${checkin} \nCheck-out: ${checkout} \nRoom Type: ${roomType}`);
     });
-
     // check if browser supports geolocation
-    if ( "geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function(position) {
+    if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function(position) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         console.log("Latitude: " + latitude + ", Longitude: " + longitude);
-      },
-      function error(error){
-        console.log(error);
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      });
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-    }
+       },
+    function error(error){
+      console.log(error);
+    },
+    {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    });
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
   </script>
 </body>
 </html>
+
