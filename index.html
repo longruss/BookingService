@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hotel Booking Page</title>
+  <style>
+    /* CSS styles go here */
+    body {
+      background-color: #f0f0f0;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .form-control{
+      width: 50%;
+      margin: 0 auto;
+      display: block;
+    }
+    .form-group{
+      margin-bottom: 20px;
+    }
+    .book-btn{
+      background-color: #3b5998;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Book Your Room</h1>
+  <form id="booking-form">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="tel" class="form-control" id="phone" required>
+    </div>
+    <div class="form-group">
+      <label for="checkin">Check-in:</label>
+      <input type="date" class="form-control" id="checkin" required>
+    </div>
+    <div class="form-group">
+      <label for="checkout">Check-out:</label>
+      <input type="date" class="form-control" id="checkout" required>
+    </div>
+    <div class="form-group">
+      <label for="roomType">Room Type:</label>
+      <select class="form-control" id="roomType" required>
+        <option value="single">Single Room</option>
+        <option value="double">Double Room</option>
+        <option value="suite">Suite</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button class="book-btn" type="submit">Book</button>
+    </div>
+  </form>
+  <script>
+    // JavaScript code goes here
+    const bookingForm = document.getElementById("booking-form");
+    bookingForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const checkin = document.getElementById("checkin").value;
+      const checkout = document.getElementById("checkout").value;
+      const roomType = document.get
+      alert(`Booking Confirmed! \nName: ${name} \nEmail: ${email} \nPhone: ${phone} \nCheck-in: ${checkin} \nCheck-out: ${checkout} \nRoom Type: ${roomType}`);
+});
+  </script>
+</body>
+</html>
