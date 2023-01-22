@@ -2,31 +2,7 @@
 <html>
 <head>
   <title>Hotel Booking Page</title>
-  <style>
-    /* CSS styles go here */
-    body {
-      background-color: #f0f0f0;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    .form-control{
-      width: 50%;
-      margin: 0 auto;
-      display: block;
-    }
-    .form-group{
-      margin-bottom: 20px;
-    }
-    .book-btn{
-      background-color: #3b5998;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
   <h1>Book Your Room</h1>
@@ -73,9 +49,10 @@
       const phone = document.getElementById("phone").value;
       const checkin = document.getElementById("checkin").value;
       const checkout = document.getElementById("checkout").value;
-      const roomType = document.get
+      const roomType = document.getElementById("roomType").value;
+      
       alert(`Booking Confirmed! \nName: ${name} \nEmail: ${email} \nPhone: ${phone} \nCheck-in: ${checkin} \nCheck-out: ${checkout} \nRoom Type: ${roomType}`);
-});
+    });
   </script>
 </body>
 </html>
